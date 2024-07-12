@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [photocontroller::class, 'index'])->name('photo.photo_index');
 
+
 Route::group(['prefix'=>'account'], function(){
     Route::group(['middleware' => 'guest'], function(){
         Route::get('register', [accountController::class, 'register'])->name('account.register');
@@ -32,5 +33,7 @@ Route::group(['prefix'=>'photo'], function(){
         Route::post('update', [photocontroller::class, 'update'])->name('photo.update');
         Route::delete('delete', [photocontroller::class, 'destroy'])->name('photo.destroy');
         Route::post('', [photocontroller::class, 'add_photo'])->name('photo.add_photo');
+        Route::get('photo_details/{id}', [photocontroller::class, 'photo_details'])->name('photo.photo_details');
+        Route::get('photo_index', [photocontroller::class, 'photo_index'])->name('photo.photo_index');
     });
 });

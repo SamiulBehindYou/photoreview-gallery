@@ -5,7 +5,7 @@
     <div class="container mt-3 pb-5">
         <div class="row justify-content-center d-flex mt-5">
             <div class="col-md-12">
-                <div class="d-flex justify-content-between">
+                {{-- <div class="d-flex justify-content-between">
                     <h2 class="mb-3">Photos</h2>
                     <div class="mt-2">
                         <a href="#" class="text-dark">Clear</a>
@@ -22,7 +22,9 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
+
+
                 <div class="row mt-4">
 
                     @foreach ($photos as $photo)
@@ -31,7 +33,7 @@
 
                             <div class="col-md-4 col-lg-3 mb-4">
                                 <div class="card border-0 shadow-lg">
-                                    <a href="#">
+                                    <a href="{{ route('photo.photo_details', $photo->id) }}">
                                         @if ($photo->image == '')
                                             <img src="{{ asset('uploads/photos/thumb/notavailablephoto.jpg') }}" class="img-fluid rounded-circle" alt="photo" class="card-img-top">
                                         @else

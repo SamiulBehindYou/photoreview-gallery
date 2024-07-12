@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 10, 2024 at 05:22 AM
+-- Generation Time: Jul 10, 2024 at 07:48 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -118,7 +118,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (3, '0001_01_01_000002_create_jobs_table', 1),
 (4, '2024_06_06_121513_alter_user_table', 1),
 (5, '2024_06_08_155333_create_photo_table', 1),
-(6, '2024_06_15_153835_create_photos_table', 1);
+(6, '2024_06_15_153835_create_photos_table', 1),
+(7, '2024_07_10_172040_create_photos_table', 2);
 
 -- --------------------------------------------------------
 
@@ -135,24 +136,6 @@ CREATE TABLE `password_reset_tokens` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `photo`
---
-
-CREATE TABLE `photo` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `title` varchar(255) NOT NULL,
-  `author` varchar(255) NOT NULL,
-  `location` varchar(255) DEFAULT NULL,
-  `description` varchar(255) DEFAULT NULL,
-  `image` varchar(255) NOT NULL,
-  `status` int(11) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `photos`
 --
 
@@ -162,11 +145,18 @@ CREATE TABLE `photos` (
   `author` varchar(255) NOT NULL,
   `location` varchar(255) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
-  `image` varchar(255) NOT NULL,
+  `image` varchar(255) DEFAULT NULL,
   `status` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `photos`
+--
+
+INSERT INTO `photos` (`id`, `title`, `author`, `location`, `description`, `image`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'samiul', 'samiul', 'Dhaka', 'New City', '1720633326.jpg', 0, '2024-07-10 11:42:06', '2024-07-10 11:42:06');
 
 -- --------------------------------------------------------
 
@@ -188,7 +178,9 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('1FyZOGvQNWQjp2Ckk6U0loltijyskzpeXsHwewfT', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiYXhkUmN4a09zY3l2TGxERjNwS3B0TFNYU3RqR0RFSk5OeWxvbmtOSiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hY2NvdW50L3Byb2ZpbGUiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO30=', 1720581722);
+('1FyZOGvQNWQjp2Ckk6U0loltijyskzpeXsHwewfT', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiYXhkUmN4a09zY3l2TGxERjNwS3B0TFNYU3RqR0RFSk5OeWxvbmtOSiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hY2NvdW50L3Byb2ZpbGUiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO30=', 1720581722),
+('8pBIQHTe7mpVH3zzFpB274buPs92NZ1sWUxY6geR', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiaTN5MlpJbFY2UGVTUU0xdW81Yk13eDdwQWkwZzZ1VFlXbnZtNnR5aCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==', 1720633330),
+('bRa62nqP0fYRxa3mpts3HdpdE6DMvNtgvYRmSeD0', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiUVlTS1Q1bFY3c1pNN2JsdUNyU2ZGOU5KOXk5ZWFoS3NBQjNZUlRhcSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzU6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hY2NvdW50L2xvZ2luIjt9fQ==', 1720591798);
 
 -- --------------------------------------------------------
 
@@ -214,7 +206,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `image`, `email_verified_at`, `password`, `role`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'samiul', 'samiul@gmail.com', NULL, NULL, '$2y$12$f9U4XB2UA20Hri1MEDuoG./B7JLS9SOoVTyq3nNKMh6zAKIJ179Fq', 'user', NULL, '2024-07-09 21:21:48', '2024-07-09 21:21:48');
+(1, 'samiul', 'samiul@gmail.com', '1720587444.jpg', NULL, '$2y$12$f9U4XB2UA20Hri1MEDuoG./B7JLS9SOoVTyq3nNKMh6zAKIJ179Fq', 'user', NULL, '2024-07-09 21:21:48', '2024-07-09 22:57:24');
 
 --
 -- Indexes for dumped tables
@@ -265,12 +257,6 @@ ALTER TABLE `password_reset_tokens`
   ADD PRIMARY KEY (`email`);
 
 --
--- Indexes for table `photo`
---
-ALTER TABLE `photo`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `photos`
 --
 ALTER TABLE `photos`
@@ -311,19 +297,13 @@ ALTER TABLE `jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `photo`
---
-ALTER TABLE `photo`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `photos`
 --
 ALTER TABLE `photos`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`

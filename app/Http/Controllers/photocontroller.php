@@ -12,10 +12,13 @@ use Illuminate\Http\Request;
 class photocontroller extends Controller
 {
     public function index(){
+        return view('welcome');
+    }
+    public function photo_index(){
         $photos = Photo::orderBy('created_at', 'DESC')->where('status',0)->paginate(12);
         return view('photo.photo_index', compact('photos'));
     }
-    
+
     public function see_photo(){
         $photos = Photo::paginate(10);
         return view('photo.see_photo', compact('photos'));
@@ -145,5 +148,9 @@ class photocontroller extends Controller
                 'message' => 'Photo deleted successfully!'
             ]);
         }
+    }
+    public function photo_details($id){
+        $photo = Photo::find($id);
+        return view('photo.photo_details', compact('photo'));
     }
 }
