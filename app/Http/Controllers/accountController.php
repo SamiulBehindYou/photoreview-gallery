@@ -57,7 +57,6 @@ class accountController extends Controller
             return redirect()->route('account.profile')->with('success', 'You are successfully logged in!');
 
         } else {
-            
             return redirect()->route('account.login')->with('error', 'Either email/password incorrect');
         }
     }
