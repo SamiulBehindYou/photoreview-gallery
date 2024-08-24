@@ -4,7 +4,7 @@ use App\Http\Controllers\accountController;
 use App\Http\Controllers\photocontroller;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [photocontroller::class, 'index'])->name('photo.photo_index');
+Route::get('/', [photocontroller::class, 'index'])->name('index');
 
 
 Route::group(['prefix'=>'account'], function(){

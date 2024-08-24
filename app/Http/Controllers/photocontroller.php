@@ -12,7 +12,8 @@ use Illuminate\Http\Request;
 class photocontroller extends Controller
 {
     public function index(){
-        return view('welcome');
+        $photos = Photo::orderBy('created_at', 'DESC')->where('status',0)->paginate(10);
+        return view('welcome', compact('photos'));
     }
     public function photo_index(){
         $photos = Photo::orderBy('created_at', 'DESC')->where('status',0)->paginate(12);
